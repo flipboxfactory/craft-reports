@@ -1,0 +1,29 @@
+language: php
+
+sudo: false
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+
+env:
+  - DB_DRIVER=mysql DB_DATABASE=test DB_SERVER=127.0.0.1 DB_USER=root DB_PASSWORD=
+
+services:
+  - mysql
+
+before_script:
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - if [ $(phpenv version-name) = "7.1" ]; then ./cc-test-reporter before-build; fi
+
+script:
+  - vendor/bin/phpcs --standard=psr2 --ignore=src/web/assets/*/dist/*,src/migrations/m* src/
+  - php vendor/bin/codecept run unit -vvv -d --coverage --coverage-xml
+
+after_script:
+  - mv tests/_output/coverage.xml clover.xml
+  - if [ $(phpenv version-name) = "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --coverage-input-type clover --id f3e8ef9c8d044c6ad45438cfb4203eb748f263ed59f18981a6a2f7f0ad1dd269 --exit-code $TRAVIS_TEST_RESULT; fi
