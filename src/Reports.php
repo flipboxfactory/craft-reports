@@ -15,6 +15,9 @@ use yii\base\Event;
  * @since 1.0.0
  *
  * @method SettingsModel getSettings()
+ *
+ * @property-read services\Formats $formats
+ * @property-read services\Reports $reports
  */
 class Reports extends Plugin
 {
