@@ -175,7 +175,6 @@ class Reports extends Component
         try {
             return $this->create($config);
         } catch (InvalidConfigException $e) {
-
             var_dump($e);
             exit;
 

@@ -98,8 +98,10 @@ class Run extends Action
             return $identifier;
         }
 
-        $identifier = Craft::$app->getRequest()->getParam('identifier',
-            Craft::$app->getRequest()->getParam('key',
+        $identifier = Craft::$app->getRequest()->getParam(
+            'identifier',
+            Craft::$app->getRequest()->getParam(
+                'key',
                 Craft::$app->getRequest()->getParam('handle')
             )
         );

@@ -87,11 +87,11 @@ class QueryReport extends AbstractReport
     protected function getFileName()
     {
         return Craft::$app->getView()->renderString(
-                $this->fileName,
-                [
+            $this->fileName,
+            [
                     'report' => $this
                 ]
-            ) . '.' . $this->getFormat()::fileExtension();
+        ) . '.' . $this->getFormat()::fileExtension();
     }
 
     /**

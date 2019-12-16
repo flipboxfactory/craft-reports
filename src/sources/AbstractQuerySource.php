@@ -30,7 +30,7 @@ abstract class AbstractQuerySource extends AbstractSource
     /**
      * @return QueryInterface
      */
-    protected abstract function getQuery(): QueryInterface;
+    abstract protected function getQuery(): QueryInterface;
 
     /**
      * @return array
