@@ -1,0 +1,62 @@
+{
+	"name": "flipboxfactory/craft-reports",
+	"description": "Reports for Craft CMS",
+	"version": "1.0.0",
+	"type": "craft-plugin",
+	"keywords": [
+		"flipbox",
+		"reports",
+		"craftcms",
+		"yii2"
+	],
+	"license": "proprietary",
+	"authors": [{
+		"name": "Flipbox Factory",
+		"email": "hello@flipboxfactory.com"
+	}],
+	"support": {
+		"email": "support@flipboxfactory.com",
+		"issues": "https://github.com/flipboxfactory/craft-reports/issues?state=open",
+		"source": "https://github.com/flipboxfactory/craft-reports",
+		"docs": "https://github.com/flipboxfactory/craft-reports",
+		"rss": "https://github.com/flipboxfactory/craft-reports/commits/master.atom"
+	},
+	"require": {
+		"craftcms/cms": "^3.1.20",
+		"flipboxfactory/craft-ember": "^2.4.1",
+		"violet/streaming-json-encoder": "^1.1",
+		"zendframework/zend-diactoros": "^1.4"
+	},
+	"require-dev": {
+		"ext-dom": "*",
+		"squizlabs/php_codesniffer": "^3.2",
+		"codeception/codeception": "^2.4.0",
+		"vlucas/phpdotenv": "^2.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"flipbox\\craft\\reports\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"flipbox\\craft\\reports\\tests\\": "tests/src/"
+		}
+	},
+	"extra": {
+		"name": "Reports",
+		"handle": "reports",
+		"developer": "Flipbox Digital",
+		"developerUrl": "https://www.flipboxfactory.com",
+		"class": "flipbox\\craft\\reports\\Reports",
+		"changelogUrl": "https://raw.githubusercontent.com/flipboxfactory/organizations/master/CHANGELOG.md",
+		"documentationUrl": "https://github.com/flipboxfactory/craft-reports",
+		"hasCpSettings": false,
+		"hasCpSection": true,
+		"schemaVersion": "1.0.0",
+		"branch-alias": {
+			"dev-develop": "1.0.x-dev",
+			"dev-master": "1.0.x-dev"
+		}
+	}
+}

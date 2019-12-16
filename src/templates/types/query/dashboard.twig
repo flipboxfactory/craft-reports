@@ -1,0 +1,33 @@
+{% do craft.app.view.registerAssetBundle('flipbox\\craft\\reports\\web\\assets\\dataTables\\DataTables') -%}
+
+{% set dataTableColumns = [] %}
+{% for label, name in columns %}
+    {% set dataTableColumns = dataTableColumns|merge([{
+        data: label
+    }]) %}
+{% endfor %}
+
+<table id="results" class="data fullwidth collapsible">
+    <thead>
+    {% for label, name in columns %}
+        <th scope="col">{{ name|t('reports') }}</th>
+    {% endfor %}
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+{% js %}
+{#    <script>#}
+        $(document).ready(function () {
+            $('#results').DataTable({
+                "columns": {{ dataTableColumns|json_encode|raw }},
+                "ajax": {
+                    "url": "{{ dataUrl }}",
+                    "dataSrc": "",
+                    "data": {{ params|json_encode|raw }}
+                }
+            });
+        });
+{#    </script>#}
+{% endjs %}

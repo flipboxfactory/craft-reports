@@ -1,0 +1,10 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% block actionButton %}
+    {{ report.cpActionHtml|raw }}
+{% endblock %}
+
+{% block content %}
+    {{ report.cpDashboardHtml|raw }}
+{% endblock %}

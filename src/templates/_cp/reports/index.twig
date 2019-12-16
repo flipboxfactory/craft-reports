@@ -1,0 +1,31 @@
+{% extends "reports/_cp/_layout" %}
+{% import "_includes/forms" as forms %}
+
+{% block content %}
+    <p id="no-results"{% if reports|length %} class="hidden"{% endif %}>
+        {{ "No reports exist yet."|t('reports') }}
+    </p>
+
+    {% if reports|length %}
+
+        <table id="results" class="data fullwidth collapsible">
+            <thead>
+            <th scope="col">{{ "Name"|t('app') }}</th>
+            <th scope="col">{{ "Description"|t('app') }}</th>
+            </thead>
+            <tbody>
+            {% for report in reports %}
+                <tr data-id="{{ report.handle }}" data-name="{{ report.name|t('reports') }}">
+                    <th scope="row" data-title="{{ 'Name'|t('reports') }}">
+                        <a href="{{ url(baseCpPath ~ '/' ~ report.handle) }}">{{ report.name|t('reports') }}</a>
+                    </th>
+                    <td data-title="{{ 'Description'|t('reports') }}"><code>{{ report.description }}</code></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}

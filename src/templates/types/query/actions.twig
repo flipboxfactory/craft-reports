@@ -1,0 +1,14 @@
+{% set downloads = downloads|default([]) %}
+{% if downloads|length %}
+    <div class="btn submit menubtn right">Download</div>
+    <div class="menu">
+        <ul>
+            {% for format, url in downloads %}
+                <li><a href="{{ url }}">
+                        {{ format }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
