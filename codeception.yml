@@ -31,8 +31,8 @@ modules:
         clean: true
         setupCraft: true
       plugins:
-        - class: \flipbox\craft\salesforce\Force
-          handle: salesforce
+        - class: \flipbox\craft\reports\Reports
+          handle: reports
 
   enabled:
     - Db:
