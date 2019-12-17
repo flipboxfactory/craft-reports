@@ -28,6 +28,11 @@ class QueryReport extends AbstractReport
     public $fileName = '{{ report.name ?? "report" }}';
 
     /**
+     * @var string|null
+     */
+    public $sourceClass;
+
+    /**
      * @inheritDoc
      *
      * @throws \yii\base\Exception

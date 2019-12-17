@@ -2,7 +2,9 @@
 
 namespace flipbox\craft\reports\events;
 
+use flipbox\craft\reports\formats\CSV;
 use flipbox\craft\reports\formats\FormatInterface;
+use flipbox\craft\reports\formats\JSON;
 use yii\base\Event;
 
 /**
@@ -19,5 +21,12 @@ class RegisterFormats extends Event
     /**
      * @var FormatInterface[]
      */
-    public $formats = [];
+    public $formats = [
+        'json' => [
+            'class' => JSON::class
+        ],
+        'csv' => [
+            'class' => CSV::class
+        ]
+    ];
 }

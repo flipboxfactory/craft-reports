@@ -175,9 +175,6 @@ class Reports extends Component
         try {
             return $this->create($config);
         } catch (InvalidConfigException $e) {
-            var_dump($e);
-            exit;
-
             Plugin::error(
                 sprintf(
                     "Exception caught while trying to create report: [%s]. Exception: [%s].",
@@ -192,11 +189,12 @@ class Reports extends Component
                 ),
                 __METHOD__
             );
+
+            throw $e;
         }
 
         return null;
     }
-
 
     /**
      * @param array $config

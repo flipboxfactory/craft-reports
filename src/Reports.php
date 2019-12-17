@@ -150,8 +150,7 @@ class Reports extends Plugin
             $event->rules,
             [
                 'reports' => 'reports/cp/view/reports/index',
-                'reports/<identifier:\w+>' => 'reports/cp/view/reports/view',
-
+                'reports/<identifier:(.*)>' => 'reports/cp/view/reports/view',
             ]
         );
     }
