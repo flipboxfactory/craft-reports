@@ -111,6 +111,7 @@ class QueryReport extends AbstractReport
         return Craft::$app->getView()->renderTemplate(
             static::CP_ACTIONS_TEMPLATE_PATH,
             [
+                'report' => $this,
                 'downloads' => [
                     'CSV' => $this->getUrl([
                         'toFile' => true,
@@ -138,6 +139,7 @@ class QueryReport extends AbstractReport
         return Craft::$app->getView()->renderTemplate(
             static::CP_DASHBOARD_TEMPLATE_PATH,
             [
+                'report' => $this,
                 'columns' => $this->getSource()->getColumns(),
                 'dataUrl' => UrlHelper::siteUrl(
                     $this->getUrl()

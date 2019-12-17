@@ -2,6 +2,8 @@
 
 namespace flipbox\craft\reports\cp\controllers\view;
 
+use Craft;
+use craft\helpers\ArrayHelper;
 use craft\helpers\UrlHelper;
 use flipbox\craft\reports\Reports;
 use flipbox\craft\reports\reports\ReportInterface;
@@ -47,13 +49,16 @@ class ReportsController extends AbstractController
     }
 
     /**
-     * @param string $identifier
+     * @param string $identifiergit ad
      * @return Response
      * @throws \yii\base\Exception
      */
     public function actionView(string $identifier): Response
     {
         $report = Reports::getInstance()->getReports()->get($identifier);
+
+        // Configure w/ additional settings / params
+        $report->configure($this->getParams());
 
         $variables = [];
         $this->upsertVariables($report, $variables);
@@ -67,6 +72,16 @@ class ReportsController extends AbstractController
         );
     }
 
+    /**
+     * @return array
+     */
+    protected function getParams(): array
+    {
+        $params = Craft::$app->getRequest()->getQueryParams();
+        ArrayHelper::remove($params, Craft::$app->getConfig()->getGeneral()->pathParam);
+
+        return $params;
+    }
 
     /*******************************************
      * VARIABLES
