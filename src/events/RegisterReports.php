@@ -31,7 +31,8 @@ class RegisterReports extends Event
      * @param $report
      * @throws InvalidConfigException
      */
-    public function add($report) {
+    public function add($report)
+    {
         if (is_string($report)) {
             $report = ['class' => $report];
         }
