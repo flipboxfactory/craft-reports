@@ -45,7 +45,7 @@ class Reports extends Component
      */
     public function all(): array
     {
-        // Todo - add database storage
+        // Todo - add database storage here
         $configs = [];
 
         // Get all overrides
@@ -120,13 +120,13 @@ class Reports extends Component
     /**
      * @param array $config
      * @return ReportInterface
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function create(array $config): ReportInterface
     {
         $config = $this->prepareConfig($config);
 
-        // Provider class
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return ObjectHelper::create(
             $config,
             ReportInterface::class
@@ -189,8 +189,6 @@ class Reports extends Component
                 ),
                 __METHOD__
             );
-
-            throw $e;
         }
 
         return null;
