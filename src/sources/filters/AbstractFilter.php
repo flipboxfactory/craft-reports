@@ -17,4 +17,12 @@ abstract class AbstractFilter extends BaseObject implements FilterInterface
             $config
         );
     }
+
+    /**
+     * @return array
+     */
+    public function getParams(): array
+    {
+        return [];
+    }
 }

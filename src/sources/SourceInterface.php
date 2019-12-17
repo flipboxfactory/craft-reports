@@ -13,6 +13,11 @@ interface SourceInterface
     /**
      * @return array
      */
+    public function getParams(): array;
+
+    /**
+     * @return array
+     */
     public function getColumns(): array;
 
     /**

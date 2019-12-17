@@ -9,4 +9,9 @@ interface FilterInterface
      * @return void
      */
     public function configure(array $config);
+
+    /**
+     * @return array
+     */
+    public function getParams(): array;
 }

@@ -9,10 +9,12 @@ abstract class AbstractQuerySource extends AbstractSource
 {
     use FilterTrait;
 
+    const LIMIT = null;
+
     /**
      * @var int
      */
-    public $limit = null;
+    public $limit = self::LIMIT;
 
     /**
      * @var callable
@@ -31,6 +33,22 @@ abstract class AbstractQuerySource extends AbstractSource
      * @return QueryInterface
      */
     abstract protected function getQuery(): QueryInterface;
+
+    /**
+     * @return array
+     */
+    public function getParams(): array
+    {
+        $params = [
+            'filter' => $this->getFilter()->getParams() ?? null
+        ];
+
+        if ($this->limit != self::LIMIT) {
+            $params['limit'] = $this->limit;
+        }
+
+        return $params;
+    }
 
     /**
      * @return array

@@ -144,7 +144,8 @@ class QueryReport extends AbstractReport
                 ),
                 'params' => [
                     'format' => 'json',
-                    'toFile' => true
+                    'toFile' => true,
+                    'source' => $this->getSource()->getParams()
                 ]
             ]
         );

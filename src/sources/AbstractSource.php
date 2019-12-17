@@ -17,4 +17,12 @@ abstract class AbstractSource extends BaseObject implements SourceInterface
             $config
         );
     }
+
+    /**
+     * @return array
+     */
+    public function getParams(): array
+    {
+        return [];
+    }
 }
