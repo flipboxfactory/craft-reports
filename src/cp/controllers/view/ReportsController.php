@@ -49,7 +49,7 @@ class ReportsController extends AbstractController
     }
 
     /**
-     * @param string $identifiergit ad
+     * @param string $identifier
      * @return Response
      * @throws \yii\base\Exception
      */
