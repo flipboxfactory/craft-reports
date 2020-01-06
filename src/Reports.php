@@ -4,6 +4,7 @@ namespace flipbox\craft\reports;
 
 use Craft;
 use craft\base\Plugin;
+use craft\console\Application as ConsoleApplication;
 use craft\events\RegisterUrlRulesEvent;
 use craft\web\UrlManager;
 use flipbox\craft\ember\modules\LoggerTrait;
@@ -27,13 +28,6 @@ class Reports extends Plugin
      * @var string
      */
     public static $category = 'reports';
-
-    public $controllerMap = [
-        'users' => [
-           'class' => 'app\controllers\PostController',
-           'pageTitle' => 'something new',
-        ]
-      ];
 
     /**
      * @inheritdoc
@@ -59,6 +53,16 @@ class Reports extends Plugin
             UrlManager::EVENT_REGISTER_CP_URL_RULES,
             [self::class, 'registerCpUrlRules']
         );
+
+        // Switch target to console controllers
+        if (!Craft::$app instanceof ConsoleApplication) {
+            $this->controllerMap = [
+                'users' => [
+                    'class' => 'app\controllers\PostController',
+                    'pageTitle' => 'something new',
+                ]
+            ];
+        }
     }
 
 
