@@ -61,12 +61,18 @@ class CSV extends AbstractFormat
     {
         $csv = fopen('php://temp', 'r+');
 
+        // Columns
+        $columns = $source->getColumns();
+
         // Heading
-        fputcsv($csv, $source->getColumns(), $this->delimiter, $this->enclosure);
+        fputcsv($csv, $columns, $this->delimiter, $this->enclosure);
+
+        // Invert columns and set empty values
+        $keys = array_flip(array_keys($columns));
 
         // Rows
         foreach ($source->getData() as $row) {
-            fputcsv($csv, $row, $this->delimiter, $this->enclosure);
+            fputcsv($csv, array_replace($keys, $row), $this->delimiter, $this->enclosure);
         }
 
         return new Stream($csv);
